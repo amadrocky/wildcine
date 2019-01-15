@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Gregurco\Bundle\GuzzleBundleOAuth2Plugin\GuzzleBundleOAuth2Plugin;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\Config\Resource\FileResource;
@@ -19,8 +20,14 @@ class Kernel extends BaseKernel
     {
         $contents = require $this->getProjectDir().'/config/bundles.php';
         foreach ($contents as $class => $envs) {
-            if ($envs[$this->environment] ?? $envs['all'] ?? false) {
-                yield new $class();
+            if (isset($envs['all']) || isset($envs[$this->environment])) {
+                if ($class === \EightPoints\Bundle\GuzzleBundle\EightPointsGuzzleBundle::class) {
+                    yield new $class([
+                        new GuzzleBundleOAuth2Plugin(),
+                    ]);
+                } else {
+                    yield new $class();
+                }
             }
         }
     }
