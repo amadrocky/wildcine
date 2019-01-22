@@ -1,0 +1,25 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="head-actors">
+            <h1>{{ actor.name }}</h1>
+        </div>
+    </div>
+    <div class="movie-back">
+        <div class="row justify-content-around">
+            <div class="col-3 image-show">
+                <img src="{{ actor.image }}">
+            </div>
+            <div class="col-8 about-show">
+                <span>Age : </span>{{ actor.age }}<br/>
+                <span>Country : </span>{{ actor.country }}<br/>
+                <span>Movies : </span>
+                {% for movie in movies %}
+                    {{ movie.title }}
+                {% endfor %}<br/>
+                <a href="#" class="btn comment-btn justify-content-center">Add comment</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
