@@ -1,0 +1,19 @@
+easy_admin:
+    formats:
+      date: 'Y'
+    entities:
+        # List the entity class name you want to manage
+        Actor:
+            class: App\Entity\Actor
+            list:
+              fields: ['id', 'name', 'age', 'country']
+
+        Comment:
+            class: App\Entity\Comment
+            list:
+              fields: ['id', 'name', 'actor', 'movie']
+
+        Movie:
+            class: App\Entity\Movie
+            list:
+              fields: ['id', 'title', 'novelty', 'boxOffice', 'year', 'country']
