@@ -37,12 +37,15 @@ class SecurityController extends AbstractController
         $form->handleRequest($request);
 
         if( $form->isSubmitted() && $form->isValid()) {
-            $passwordEncoder->encodePassword(
+            $user->setPassword($passwordEncoder->encodePassword(
                 $user,
                 $user->getPassword()
-            );
+            ));
             $em->persist($user);
             $em->flush();
+            $this->addFlash('success', 'User created !');
+
+            return $this->redirectToRoute('app_login');
         }
 
         return $this->render('security/register.html.twig', ['form' => $form->createView()]);
