@@ -1,0 +1,21 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Box Office{% endblock %}
+
+{% block body %}
+    <h1>Box Office</h1>
+    <div class="row justify-content-around">
+        {% for movie in movies %}
+            <div class="col">
+                <div class="card">
+                    <img class="card-img-top" src="{{ movie.image }}" alt="Card image cap">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-center">{{ movie.title }}</h5>
+                        <p class="card-text">Kind : {{ movie.kind }}<br/>Director : {{ movie.director }}<br/></p>
+                        <a href="{{ path('movie_show', {'id': movie.id}) }}" class="btn btn-primary">About</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

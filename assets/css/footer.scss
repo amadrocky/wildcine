@@ -1,0 +1,18 @@
+.footer-sentence {
+  font-family: 'Orbitron', sans-serif;
+  color: white;
+  background-color: #1b1e21;
+  span {
+    color: red;
+  }
+  a {
+    font-family: 'Orbitron', sans-serif;
+    color: white;
+    padding-top: 0.7rem;
+    padding-left: 0.5rem;
+  }
+  a:hover {
+    color: orangered;
+    text-decoration: none;
+  }
+}
