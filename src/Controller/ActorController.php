@@ -16,12 +16,14 @@ class ActorController extends AbstractController
      */
     public function index(MovieRepository $movieRepository, ActorRepository $actorRepository)
     {
+        $user = $this->getUser();
         $movies = $movieRepository->findAll();
         $actors = $actorRepository->findAll();
 
         return $this->render('actor/index.html.twig', [
             'movies' => $movies,
-            'actors' => $actors
+            'actors' => $actors,
+            'user' => $user
         ]);
     }
 

@@ -1,12 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block header %}
-    <nav class="nav justify-content-center fixed-top">
+    <nav class="nav justify-content-around fixed-top">
+        <p class="user-mail">Hello {{ user.email }}</p>
         <a class="nav-link  active" href="{{ path('movies') }}">Movies</a>
         <a class="nav-link" href="#">Box office</a>
         <a class="nav-link" href="#">News</a>
         <a class="nav-link" href="{{ path('actors') }}">Actors</a>
         <a class="nav-link" href="#">Contact us</a>
+        <a class="btn btn-danger" href="{{ path('app_logout') }}">Logout</a>
     </nav>
 {% endblock %}
 
