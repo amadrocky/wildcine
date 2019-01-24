@@ -32,9 +32,11 @@ class MovieController extends AbstractController
      */
     public function show(Movie $movie): Response
     {
+        $user = $this->getUser();
 
         return $this->render('movie/show.html.twig', [
             'movie' => $movie,
+            'user' => $user,
             'actors' => $movie->getActors()
         ]);
     }
