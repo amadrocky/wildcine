@@ -18,7 +18,7 @@
                 {% for movie in movies %}
                     {{ movie.title }}
                 {% endfor %}<br/>
-                <a href="#" class="btn comment-btn justify-content-center">Add comment</a>
+                <a href="{{ path('comment_actor', {'id': actor.id}) }}" class="btn comment-btn justify-content-center">Add comment</a>
             </div>
         </div>
     </div>
