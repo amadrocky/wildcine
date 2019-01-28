@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Actor;
 use App\Repository\ActorRepository;
+use App\Repository\CommentRepository;
 use App\Repository\MovieRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -30,13 +31,23 @@ class ActorController extends AbstractController
     /**
      * @Route("/actor/{id}", name="actor_show", methods="GET")
      */
-    public function show(Actor $actor): Response
+    public function show(Actor $actor, CommentRepository $commentRepository): Response
     {
         $user = $this->getUser();
+        $comments = $commentRepository->findByActor($actor);
+        $notes = $commentRepository->findByActor(['id' => $actor->getId()]);
+        $totalNote = 0;
+        foreach($notes as $note) {
+            $totalNote += $note->getNote();
+        }
+        $average = $totalNote / count($notes);
+
         return $this->render('actor/show.html.twig', [
             'actor' => $actor,
             'user' => $user,
-            'movies' => $actor->getmovies()
+            'movies' => $actor->getMovies(),
+            'comments' => $comments,
+            'average' => $average
         ]);
     }
 }

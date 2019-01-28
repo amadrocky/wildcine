@@ -1,0 +1,21 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Comment index{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="head-movie">
+            <h2>{{ movie.title }}</h2>
+        </div>
+    </div>
+    <div class="movie-back">
+        <div class="row justify-content-around">
+            <div class="col-3 image-show">
+                <img src="{{ movie.image }}">
+            </div>
+            <div class="col-8">
+                {{ include('comment/_form.html.twig') }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

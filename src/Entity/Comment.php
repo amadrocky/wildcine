@@ -36,6 +36,11 @@ class Comment
      */
     private $movie;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $note;
+
         public function getId(): ?int
     {
         return $this->id;
@@ -87,5 +92,22 @@ class Comment
         $this->movie = $movie;
 
         return $this;
+    }
+
+    public function getNote(): ?int
+    {
+        return $this->note;
+    }
+
+    public function setNote(?int $note): self
+    {
+        $this->note = $note;
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return (string) $this->comment;
     }
 }
