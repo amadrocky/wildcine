@@ -6,29 +6,29 @@ body {
 }
 
 h1 {
-  font-family: 'Orbitron', sans-serif;
+  @include title-font;
   font-size: 10rem;
-  color: darkorange;
+  color: $secondary;
   padding-top: 5%;
-  text-shadow: 4px 4px 4px black;
+  text-shadow: 4px 4px 4px $primary;
 }
 
 h2 {
-  font-family: 'Orbitron', sans-serif;
+  @include title-font;
   font-size: 7rem;
-  color: whitesmoke;
+  color: $tertiary;
   padding-top: 5%;
-  text-shadow: 4px 4px 4px black;
+  text-shadow: 4px 4px 4px $primary;
 }
 
 h3 {
-  font-family: 'Timmana', sans-serif;
+  @include subTitle-font;
   font-size: 3rem;
 }
 
 .shiny-btn {
   width: 50vh;
-  color: white;
+  color: $tertiary;
   font-weight: bold;
   font-size: 3rem;
   text-decoration: none;
@@ -48,12 +48,12 @@ h3 {
   transform: scale(1.1);
   background-position: -60px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  color: white;
+  color: $tertiary;
   text-decoration: none;
 }
 
 .shiny-btn:visited {
-  color: white;
+  color: $tertiary;
   text-decoration: none;
 }
 

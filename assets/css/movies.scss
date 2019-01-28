@@ -1,9 +1,9 @@
 .card {
-  color: white;
+  color: $tertiary;
   border: none;
   margin-bottom: 2rem;
   padding-bottom: 1rem;
-  background-color: #1b1e21;
+  background-color: $primary;
   .card-title {
     padding-top: 1rem;
   }

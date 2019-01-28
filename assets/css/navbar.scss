@@ -1,24 +1,24 @@
 .nav {
-  background-color: #1b1e21;
+  background-color: $primary;
   padding-top: 0.5rem;
   .nav-link {
-    font-family: 'Timmana', sans-serif;
-    color: white;
+    @include subTitle-font;
+    color: $tertiary;
     font-size: 1.6rem;
   }
   .nav-link:hover {
-    color: darkorange;
+    color: $secondary;
   }
   .btn-danger {
     margin-top: 0.3rem;
     padding-top: 0.7rem;
-    font-family: 'Orbitron', sans-serif;
+    @include title-font;
     font-size: 1.3rem;
     height: 3rem;
   }
   .user-mail {
-    font-family: 'Orbitron', sans-serif;
-    color: darkorange;
+    @include title-font;
+    color: $secondary;
     padding-top: 1rem;
     font-size: 1.3rem;
   }
