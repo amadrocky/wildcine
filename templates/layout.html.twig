@@ -2,7 +2,7 @@
 
 {% block header %}
     <nav class="nav justify-content-around fixed-top">
-        <p class="user-mail">Hello {{ user.email }}</p>
+        <p class="user-mail">{{ user.email }}</p>
         <a class="nav-link  active" href="{{ path('movies') }}">Movies</a>
         <a class="nav-link" href="{{ path('box_office') }}">Box office</a>
         <a class="nav-link" href="{{ path('news') }}">News</a>
