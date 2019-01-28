@@ -31,16 +31,23 @@ class ActorController extends AbstractController
     /**
      * @Route("/actor/{id}", name="actor_show", methods="GET")
      */
-    public function show(Actor $actor, MovieRepository $movieRepository, CommentRepository $commentRepository): Response
+    public function show(Actor $actor, CommentRepository $commentRepository): Response
     {
         $user = $this->getUser();
-        $movies = $movieRepository->findAll();
-        $comments = $commentRepository->findAll();
+        $comments = $commentRepository->findByActor($actor);
+        $notes = $commentRepository->findByActor(['id' => $actor->getId()]);
+        $totalNote = 0;
+        foreach($notes as $note) {
+            $totalNote += $note->getNote();
+        }
+        $average = $totalNote / count($notes);
+
         return $this->render('actor/show.html.twig', [
             'actor' => $actor,
             'user' => $user,
-            'movies' => $movies,
-            'comments' => $comments
+            'movies' => $actor->getMovies(),
+            'comments' => $comments,
+            'average' => $average
         ]);
     }
 }

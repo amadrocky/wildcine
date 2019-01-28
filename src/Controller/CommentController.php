@@ -58,7 +58,7 @@ class CommentController extends AbstractController
             $entityManager->flush();
             $this->addFlash('success', 'Comment added !');
 
-            return $this->redirectToRoute('actor_show');
+            return $this->redirectToRoute('actor_show', array('id' => $actor->getId()));
         }
 
         return $this->render('comment/actor_comment.html.twig', [

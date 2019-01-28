@@ -1,5 +1,6 @@
 {% extends 'layout.html.twig' %}
 
+{% block title %}{{ actor.name }}{% endblock %}
 {% block body %}
     <div class="row">
         <div class="head-actors">
@@ -18,8 +19,18 @@
                 {% for movie in movies %}
                     {{ movie.title }}
                 {% endfor %}<br/>
+                <span>Note : </span>{{ average }}/5<br />
                 <a href="{{ path('comment_actor', {'id': actor.id}) }}" class="btn comment-btn justify-content-center">Add comment</a>
             </div>
         </div>
+        <div class="row justify-content-center comment-section-title">
+            <h3>Comments</h3>
+        </div>
+        {% for comment in comments %}
+            <div class="row comment-section-text">
+                <p>{{ comment.name }} : {{ comment.comment }}<br />Note : {{ comment.note }}/5</p>
+            </div>
+        {% endfor %}
+    </div>
     </div>
 {% endblock %}

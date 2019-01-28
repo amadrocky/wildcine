@@ -40,7 +40,7 @@ class MovieController extends AbstractController
         foreach($notes as $note) {
             $totalNote += $note->getNote();
         }
-        $average = $totalNote/ count($notes);
+        $average = $totalNote / count($notes);
 
         return $this->render('movie/show.html.twig', [
             'movie' => $movie,
