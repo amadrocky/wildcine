@@ -28,7 +28,10 @@
         </div>
         {% for comment in comments %}
             <div class="row comment-section-text">
-                <p>{{ comment.name }} : {{ comment.comment }}<br />Note : {{ comment.note }}/5</p>
+                <p>{{ comment.name }} : {{ comment.comment }}<br />
+                    {% if average %}
+                    Note : {{ comment.note }}/5</p>
+                    {% endif %}
             </div>
         {% endfor %}
     </div>

@@ -37,10 +37,13 @@ class ActorController extends AbstractController
         $comments = $commentRepository->findByActor($actor);
         $notes = $commentRepository->findByActor(['id' => $actor->getId()]);
         $totalNote = 0;
-        foreach($notes as $note) {
-            $totalNote += $note->getNote();
+        $average = null;
+        if (count($notes)) {
+            foreach($notes as $note) {
+                $totalNote += $note->getNote();
+            }
+            $average = $totalNote / count($notes);
         }
-        $average = $totalNote / count($notes);
 
         return $this->render('actor/show.html.twig', [
             'actor' => $actor,
