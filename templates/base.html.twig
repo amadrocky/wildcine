@@ -11,6 +11,15 @@
     <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
 </head>
 <body>
+{% for label, messages in app.flashes %}
+    {% for message in messages %}
+        <div class="row justify-content-center mt-5">
+            <div class="col-4 text-center alert alert-{{ label }} flash-{{ label }}">
+                {{ message }}
+            </div>
+        </div>
+    {% endfor %}
+{% endfor %}
 <header>
     {% block header %}{% endblock %}
 </header>
