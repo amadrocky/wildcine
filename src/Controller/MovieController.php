@@ -37,10 +37,13 @@ class MovieController extends AbstractController
         $comments = $commentRepository->findByMovie($movie);
         $notes = $commentRepository->findByMovie(['id' => $movie->getId()]);
         $totalNote = 0;
+        $average = 0;
         foreach($notes as $note) {
             $totalNote += $note->getNote();
         }
-        $average = $totalNote / count($notes);
+        if(count($notes)) {
+            $average = $totalNote / count($notes);
+        }
 
         return $this->render('movie/show.html.twig', [
             'movie' => $movie,

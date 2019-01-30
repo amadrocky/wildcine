@@ -1,0 +1,38 @@
+{% extends 'layout.html.twig' %}
+
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{% block title %}Api request{% endblock %}
+
+{% block body %}
+    <div class="form-search-api">
+        {{ form_start(form) }}
+        {{ form_row(form.movie_search) }}
+        <button class="btn btn-danger">{{ button_label|default('Search') }}</button>
+        {{ form_end(form) }}
+    </div>
+
+    {% if json is defined %}
+        <div class="row justify-content-around movie-back">
+            <div class="col-2 image-show">
+                <img src="{{ json.Poster }}">
+            </div>
+            <div class="col-6 about-show">
+                <p><span>Title :</span> {{ json.Title }}</p><br/>
+                <p><span>Genre :</span> {{ json.Genre }}</p><br/>
+                <p><span>Year :</span> {{ json.Year }}</p><br/>
+                <p><span>Director :</span> {{ json.Director }}</p><br/>
+                <p><span>Runtime :</span> {{ json.Runtime }}</p><br/>
+            </div>
+        </div>
+        <div class="row movie-back">
+            <div class="col about-show">
+                <p><span>Plot :</span> {{ json.Plot }}</p><br/>
+                <p><span>Actors :</span> {{ json.Actors }}</p><br/>
+                <p><span>Country :</span> {{ json.Country }}</p><br/>
+                <a class="btn btn-danger trailer-btn" href="{{ path('addMovie') }}">Add</a>
+            </div>
+        </div>
+
+    {% endif %}
+{% endblock %}
